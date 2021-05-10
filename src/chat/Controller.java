@@ -1,7 +1,5 @@
-package sample;
+package chat;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,12 +19,8 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        txtAreaMsg.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                btnSend.setDisable(observable.getValue().isEmpty());
-            }
-        });
+        txtAreaMsg.textProperty().addListener((observable, oldValue, newValue) ->
+                btnSend.setDisable(observable.getValue().isEmpty()));
     }
 
     public void btnClicked(ActionEvent actionEvent) {
